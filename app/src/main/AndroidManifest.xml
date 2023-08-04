@@ -15,11 +15,14 @@
         android:theme="@style/Theme.Assignmentfull_Server"
         tools:targetApi="31">
         <activity
+            android:name=".screens.DataMyApiActivity"
+            android:exported="false" />
+        <activity
             android:name=".Auth.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".Auth.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +32,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
-
     </application>
 
 </manifest>
