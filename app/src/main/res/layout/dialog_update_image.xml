@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/etTitleEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etContentEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Content"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/etTitleEdit"
+        app:layout_constraintStart_toStartOf="@+id/etTitleEdit"
+        app:layout_constraintTop_toBottomOf="@+id/etTitleEdit" />
+
+    <ImageView
+        android:id="@+id/imgEditImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/etContentEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etContentEdit"
+        app:layout_constraintTop_toBottomOf="@+id/etContentEdit"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/btnCancelEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveEdit"
+        app:layout_constraintStart_toEndOf="@+id/btnSaveEdit"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveEdit"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_clear_24" />
+
+    <ImageButton
+        android:id="@+id/btnSaveEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgEditImage"
+        app:layout_constraintStart_toEndOf="@+id/imgEditImage"
+        app:layout_constraintTop_toBottomOf="@+id/imgEditImage"
+        app:layout_constraintVertical_bias="0.674"
+        app:srcCompat="@drawable/baseline_save_as_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>
