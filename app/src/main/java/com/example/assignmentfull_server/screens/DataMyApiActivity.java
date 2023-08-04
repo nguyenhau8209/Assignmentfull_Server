@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,9 +47,12 @@ public class DataMyApiActivity extends AppCompatActivity {
 
     private void getData() {
         ApiServer.apiServer.getData().enqueue(new Callback<DataServer>() {
+
             @Override
             public void onResponse(Call<DataServer> call, Response<DataServer> response) {
+                Log.d("Response", "onResponse: " + response.body().getDataNasas());
                 nasaList = response.body().getDataNasas();
+                Log.d("NasaList", "onResponse: " + nasaList);
                 adapter.setData(nasaList);
                 RecyclerView rcv = findViewById(R.id.rcv_items);
                 rcv.setAdapter(adapter);
@@ -58,6 +62,7 @@ public class DataMyApiActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<DataServer> call, Throwable t) {
                 Toast.makeText(DataMyApiActivity.this, "Get data from my api false", Toast.LENGTH_SHORT).show();
+                Log.e("Get Data From API", "onFailure: " + t.getMessage() );
             }
         });
     }

@@ -106,6 +106,13 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
                 <ImageView
                     android:id="@+id/img_hd"
                     android:layout_width="match_parent"
@@ -137,6 +144,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_show_data" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Select date"
+            app:layout_constraintBottom_toTopOf="@+id/spn_year"
+            app:layout_constraintStart_toStartOf="@+id/spn_year"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.355" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

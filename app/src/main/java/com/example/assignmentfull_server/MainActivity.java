@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     String base64UrlHd;
     String base64Url;
     Button button;
+    ProgressBar progressBar;
 
     private String dateSelected, yearSlected, monthSelected, daySelected;
 
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         tvDate = findViewById(R.id.tv_date);
         tvExplanation = findViewById(R.id.tv_explanation);
         tvNotification = findViewById(R.id.tv_notification);
+        progressBar = findViewById(R.id.progressBar2);
 
 
         List<String> days = new ArrayList<>();
@@ -184,14 +186,16 @@ public class MainActivity extends AppCompatActivity {
         ApiServer.apiServer.postData(dataNasa).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                tvNotification.setText("push data to my server successfully");
-                tvNotification.setTextColor(Color.parseColor("#198754"));
+//                tvNotification.setText("push data to my server successfully");
+//                tvNotification.setTextColor(Color.parseColor("#198754"));
+                Toast.makeText(MainActivity.this, "Post to my server success", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                tvNotification.setText("post data to my server failed");
-                tvNotification.setTextColor(Color.RED);
+//                tvNotification.setText("post data to my server failed");
+//                tvNotification.setTextColor(Color.RED);
+                Toast.makeText(MainActivity.this, "Post to my server false", Toast.LENGTH_SHORT).show();
                 Log.d("API", t.getMessage());
             }
         });
@@ -205,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callApiGetDataFormNasa(String apiKey, String dateSelected) {
+        progressBar.setVisibility(View.VISIBLE);
         apiInterface = apiBase.getApiInterface();
         apiInterface.getNasaApod(apiKey, dateSelected).enqueue(new Callback<DataNasa>() {
             @Override
@@ -216,11 +221,14 @@ public class MainActivity extends AppCompatActivity {
                 tvExplanation.setText(dataNasa.getExplanation());
                 ImageView imgHd = findViewById(R.id.img_hd);
                 if (dataNasa.getHdurl() != null) {
+                    progressBar.setVisibility(View.GONE);
                     Glide.with(MainActivity.this).load(dataNasa.getHdurl()).error(R.drawable.baseline_error_24).into(imgHd);
                 } else {
+                    progressBar.setVisibility(View.GONE);
                     Glide.with(MainActivity.this).load(dataNasa.getUrl()).error(R.drawable.baseline_error_24).into(imgHd);
                 }
-                tvNotification.setText("get data from Nasa successfully");
+//                tvNotification.setText("get data from Nasa successfully");
+                Toast.makeText(MainActivity.this, "Get data from Nasa successfully", Toast.LENGTH_SHORT).show();
                 tvNotification.setTextColor(Color.parseColor("#198754"));
 
                 Log.d("callApiGetDataFormNasa", response.body().toString());
@@ -230,7 +238,8 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<DataNasa> call, Throwable t) {
                 findViewById(R.id.layout_show_data).setVisibility(View.GONE);
                 Log.d("EEE", t.getMessage());
-                tvNotification.setText("get data from Nasa failed");
+//                tvNotification.setText("get data from Nasa failed");
+                Toast.makeText(MainActivity.this, "Get data from Nasa false", Toast.LENGTH_SHORT).show();
                 tvNotification.setTextColor(Color.RED);
             }
         });
